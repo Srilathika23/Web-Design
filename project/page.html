@@ -1,5 +1,40 @@
 <html lang="en">
-    <script src="summa.js"></script>
+    <script src="summa.js">const arrows = document.querySelectorAll(".arrow");
+        const movieLists = document.querySelectorAll(".movie-list");
+        
+        arrows.forEach((arrow, i) => {
+          const itemNumber = movieLists[i].querySelectorAll("img").length;
+          let clickCounter = 0;
+          arrow.addEventListener("click", () => {
+            const ratio = Math.floor(window.innerWidth / 270);
+            clickCounter++;
+            if (itemNumber - (4 + clickCounter) + (4 - ratio) >= 0) {
+              movieLists[i].style.transform = `translateX(${
+                movieLists[i].computedStyleMap().get("transform")[0].x.value - 300
+              }px)`;
+            } else {
+              movieLists[i].style.transform = "translateX(0)";
+              clickCounter = 0;
+            }
+          });
+        
+          console.log(Math.floor(window.innerWidth / 270));
+        });
+        
+        //TOGGLE
+        
+        const ball = document.querySelector(".toggle-ball");
+        const items = document.querySelectorAll(
+          ".container,.movie-list-title,.navbar-container,.sidebar,.left-menu-icon,.toggle"
+        );
+        
+        ball.addEventListener("click", () => {
+          items.forEach((item) => {
+            item.classList.toggle("active");
+          });
+          ball.classList.toggle("active");
+        });
+        </script>
 <style>
     * {
   margin: 0;
@@ -335,9 +370,9 @@ body {
             <div class="featured-content"
                 style="background: linear-gradient(to bottom, rgba(0,0,0,0), #151515), url('images/f-1.jpg');">
                 <img class="featured-title" src="images/f-t-1.png" alt="">
-                <p class="featured-desc">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Iusto illo dolor
-                    deserunt nam assumenda ipsa eligendi dolore, ipsum id fugiat quo enim impedit, laboriosam omnis
-                    minima voluptatibus incidunt. Accusamus, provident.</p>
+                <p class="featured-desc">A former special forces operative is forced out of retirement when a terrorist organization threatens global security.
+                     As he races against time, 
+                    he must confront his past and uncover a conspiracy that goes deeper than he ever imagined.</p>
                 <button class="featured-button">WATCH</button>
             </div>
             <div class="movie-list-container">
@@ -347,50 +382,59 @@ body {
                         <div class="movie-list-item">
                             <img class="movie-list-item-img" src="images/1.jpeg" alt="">
                             <span class="movie-list-item-title">Her</span>
-                            <p class="movie-list-item-desc">Lorem ipsum dolor sit amet consectetur adipisicing elit. At
-                                hic fugit similique accusantium.</p>
+                            <p class="movie-list-item-desc">A banished princess discovers she is the heir to a forgotten kingdom
+                                and the only one who can save it.
+                            </p>
                             <button class="movie-list-item-button">Watch</button>
                         </div>
                         <div class="movie-list-item">
                             <img class="movie-list-item-img" src="images/2.jpeg" alt="">
                             <span class="movie-list-item-title">Star Wars</span>
-                            <p class="movie-list-item-desc">Lorem ipsum dolor sit amet consectetur adipisicing elit. At
-                                hic fugit similique accusantium.</p>
+                            <p class="movie-list-item-desc">Two strangers meet in a storm, share a magical night, 
+                                and reunite years later to see if love still lingers.</p>
                             <button class="movie-list-item-button">Watch</button>
                         </div>
                         <div class="movie-list-item">
                             <img class="movie-list-item-img" src="images/3.jpg" alt="">
                             <span class="movie-list-item-title">Storm</span>
-                            <p class="movie-list-item-desc">Lorem ipsum dolor sit amet consectetur adipisicing elit. At
-                                hic fugit similique accusantium.</p>
+                            <p class="movie-list-item-desc">A detective follows a cryptic trail left by a missing millionaire,
+                                 leading to a shocking truth.
+
+                            </p>
                             <button class="movie-list-item-button">Watch</button>
                         </div>
                         <div class="movie-list-item">
                             <img class="movie-list-item-img" src="images/4.jpg" alt="">
                             <span class="movie-list-item-title">1917</span>
-                            <p class="movie-list-item-desc">Lorem ipsum dolor sit amet consectetur adipisicing elit. At
-                                hic fugit similique accusantium.</p>
+                            <p class="movie-list-item-desc">A cursed village is haunted by eerie figures that only appear when the sun sets.
+                                Let me know if you want more.</p>
                             <button class="movie-list-item-button">Watch</button>
                         </div>
                         <div class="movie-list-item">
                             <img class="movie-list-item-img" src="images/5.jpg" alt="">
                             <span class="movie-list-item-title">Avengers</span>
-                            <p class="movie-list-item-desc">Lorem ipsum dolor sit amet consectetur adipisicing elit. At
-                                hic fugit similique accusantium.</p>
+                            <p class="movie-list-item-desc">A banished princess discovers she is the heir to a 
+                                forgotten kingdom—and the only one who can save it.
+
+                            </p>
                             <button class="movie-list-item-button">Watch</button>
                         </div>
                         <div class="movie-list-item">
                             <img class="movie-list-item-img" src="images/6.jpg" alt="">
                             <span class="movie-list-item-title">Her</span>
-                            <p class="movie-list-item-desc">Lorem ipsum dolor sit amet consectetur adipisicing elit. At
-                                hic fugit similique accusantium.</p>
+                            <p class="movie-list-item-desc">A scientist gains cosmic powers but must choose 
+                                between saving his family or the entire planet.
+
+                            </p>
                             <button class="movie-list-item-button">Watch</button>
                         </div>
                         <div class="movie-list-item">
                             <img class="movie-list-item-img" src="images/7.jpg" alt="">
                             <span class="movie-list-item-title">Her</span>
-                            <p class="movie-list-item-desc">Lorem ipsum dolor sit amet consectetur adipisicing elit. At
-                                hic fugit similique accusantium.</p>
+                            <p class="movie-list-item-desc">A lazy gamer accidentally becomes an internet sensation—and 
+                                now must survive real-world fame.
+
+                            </p>
                             <button class="movie-list-item-button">Watch</button>
                         </div>
                     </div>
@@ -404,50 +448,56 @@ body {
                         <div class="movie-list-item">
                             <img class="movie-list-item-img" src="images/8.jpg" alt="">
                             <span class="movie-list-item-title">Her</span>
-                            <p class="movie-list-item-desc">Lorem ipsum dolor sit amet consectetur adipisicing elit. At
-                                hic fugit similique accusantium.</p>
+                            <p class="movie-list-item-desc">An archaeologist and a treasure hunter race against 
+                                mercenaries to find a legendary city hidden in the Amazon.</p>
                             <button class="movie-list-item-button">Watch</button>
                         </div>
                         <div class="movie-list-item">
                             <img class="movie-list-item-img" src="images/9.jpg" alt="">
                             <span class="movie-list-item-title">Her</span>
-                            <p class="movie-list-item-desc">Lorem ipsum dolor sit amet consectetur adipisicing elit. At
-                                hic fugit similique accusantium.</p>
+                            <p class="movie-list-item-desc">A scientist gains cosmic powers but must choose between 
+                                saving his family or the entire planet.
+
+                            </p>
                             <button class="movie-list-item-button">Watch</button>
                         </div>
                         <div class="movie-list-item">
                             <img class="movie-list-item-img" src="images/10.jpg" alt="">
                             <span class="movie-list-item-title">Her</span>
-                            <p class="movie-list-item-desc">Lorem ipsum dolor sit amet consectetur adipisicing elit. At
-                                hic fugit similique accusantium.</p>
+                            <p class="movie-list-item-desc">A rebellious space pilot discovers a wormhole,
+                                 leading to a galaxy on the brink of war—and Earth’s fate at risk.</p>
                             <button class="movie-list-item-button">Watch</button>
                         </div>
                         <div class="movie-list-item">
                             <img class="movie-list-item-img" src="images/11.jpg" alt="">
                             <span class="movie-list-item-title">Her</span>
-                            <p class="movie-list-item-desc">Lorem ipsum dolor sit amet consectetur adipisicing elit. At
-                                hic fugit similique accusantium.</p>
+                            <p class="movie-list-item-desc">A musician struggling with loss rediscovers love 
+                                through an old melody and a mysterious stranger.
+
+                            </p>
                             <button class="movie-list-item-button">Watch</button>
                         </div>
                         <div class="movie-list-item">
                             <img class="movie-list-item-img" src="images/12.jpg" alt="">
                             <span class="movie-list-item-title">Her</span>
-                            <p class="movie-list-item-desc">Lorem ipsum dolor sit amet consectetur adipisicing elit. At
-                                hic fugit similique accusantium.</p>
+                            <p class="movie-list-item-desc">An archaeologist and a treasure hunter race against 
+                                mercenaries to find a legendary city hidden in the Amazon..</p>
                             <button class="movie-list-item-button">Watch</button>
                         </div>
                         <div class="movie-list-item">
                             <img class="movie-list-item-img" src="images/1.jpg" alt="">
                             <span class="movie-list-item-title">Her</span>
-                            <p class="movie-list-item-desc">Lorem ipsum dolor sit amet consectetur adipisicing elit. At
-                                hic fugit similique accusantium.</p>
+                            <p class="movie-list-item-desc">A rebellious space pilot discovers a wormhole,
+                                 leading to a galaxy on the brink of war—and Earth’s fate at risk.</p>
                             <button class="movie-list-item-button">Watch</button>
                         </div>
                         <div class="movie-list-item">
                             <img class="movie-list-item-img" src="images/1.jpg" alt="">
                             <span class="movie-list-item-title">Her</span>
-                            <p class="movie-list-item-desc">Lorem ipsum dolor sit amet consectetur adipisicing elit. At
-                                hic fugit similique accusantium.</p>
+                            <p class="movie-list-item-desc">A musician struggling with loss rediscovers love through an 
+                                old melody and a mysterious stranger.
+
+                            </p>
                             <button class="movie-list-item-button">Watch</button>
                         </div>
                     </div>
@@ -457,9 +507,9 @@ body {
             <div class="featured-content"
                 style="background: linear-gradient(to bottom, rgba(0,0,0,0), #151515), url('img/f-2.jpg');">
                 <img class="featured-title" src="images/f-t-2.png" alt="">
-                <p class="featured-desc">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Iusto illo dolor
-                    deserunt nam assumenda ipsa eligendi dolore, ipsum id fugiat quo enim impedit, laboriosam omnis
-                    minima voluptatibus incidunt. Accusamus, provident.</p>
+                <p class="featured-desc">A former special forces operative is forced out of retirement
+                     when a terrorist organization threatens global security. As he races against time, 
+                    he must confront his past and uncover a conspiracy that goes deeper than he ever imagined.</p>
                 <button class="featured-button">WATCH</button>
             </div>
             <div class="movie-list-container">
@@ -469,50 +519,54 @@ body {
                         <div class="movie-list-item">
                             <img class="movie-list-item-img" src="images/1.jpeg" alt="">
                             <span class="movie-list-item-title">Her</span>
-                            <p class="movie-list-item-desc">Lorem ipsum dolor sit amet consectetur adipisicing elit. At
-                                hic fugit similique accusantium.</p>
+                            <p class="movie-list-item-desc">A rebellious space pilot discovers a wormhole, 
+                                leading to a galaxy on the brink of war—and Earth’s fate at risk.</p>
                             <button class="movie-list-item-button">Watch</button>
                         </div>
                         <div class="movie-list-item">
                             <img class="movie-list-item-img" src="images/2.jpeg" alt="">
                             <span class="movie-list-item-title">Her</span>
-                            <p class="movie-list-item-desc">Lorem ipsum dolor sit amet consectetur adipisicing elit. At
-                                hic fugit similique accusantium.</p>
+                            <p class="movie-list-item-desc">An archaeologist and a treasure hunter race against mercenaries
+                                 to find a legendary city hidden in the Amazon.
+
+                            </p>
                             <button class="movie-list-item-button">Watch</button>
                         </div>
                         <div class="movie-list-item">
                             <img class="movie-list-item-img" src="images/15.jpg" alt="">
                             <span class="movie-list-item-title">Her</span>
-                            <p class="movie-list-item-desc">Lorem ipsum dolor sit amet consectetur adipisicing elit. At
-                                hic fugit similique accusantium.</p>
+                            <p class="movie-list-item-desc">A rebellious space pilot discovers a wormhole, 
+                                leading to a galaxy on the brink of war—and Earth’s fate at risk.</p>
                             <button class="movie-list-item-button">Watch</button>
                         </div>
                         <div class="movie-list-item">
                             <img class="movie-list-item-img" src="images/3.jpg" alt="">
                             <span class="movie-list-item-title">Her</span>
-                            <p class="movie-list-item-desc">Lorem ipsum dolor sit amet consectetur adipisicing elit. At
-                                hic fugit similique accusantium.</p>
+                            <p class="movie-list-item-desc">An archaeologist and a treasure hunter race against 
+                                mercenaries to find a legendary city hidden in the Amazon.</p>
                             <button class="movie-list-item-button">Watch</button>
                         </div>
                         <div class="movie-list-item">
                             <img class="movie-list-item-img" src="images/4.jpg" alt="">
                             <span class="movie-list-item-title">Her</span>
-                            <p class="movie-list-item-desc">Lorem ipsum dolor sit amet consectetur adipisicing elit. At
-                                hic fugit similique accusantium.</p>
+                            <p class="movie-list-item-desc">An archaeologist and a treasure hunter race against 
+                                mercenaries to find a legendary city hidden in the Amazon.
+
+                            </p>
                             <button class="movie-list-item-button">Watch</button>
                         </div>
                         <div class="movie-list-item">
                             <img class="movie-list-item-img" src="images/5.jpg" alt="">
                             <span class="movie-list-item-title">Her</span>
-                            <p class="movie-list-item-desc">Lorem ipsum dolor sit amet consectetur adipisicing elit. At
-                                hic fugit similique accusantium.</p>
+                            <p class="movie-list-item-desc">A rebellious space pilot discovers a wormhole, 
+                                leading to a galaxy on the brink of war—and Earth’s fate at risk.</p>
                             <button class="movie-list-item-button">Watch</button>
                         </div>
                         <div class="movie-list-item">
                             <img class="movie-list-item-img" src="images/1.jpg" alt="">
                             <span class="movie-list-item-title">Her</span>
-                            <p class="movie-list-item-desc">Lorem ipsum dolor sit amet consectetur adipisicing elit. At
-                                hic fugit similique accusantium.</p>
+                            <p class="movie-list-item-desc">An archaeologist and a treasure hunter 
+                                race against mercenaries to find a legendary city hidden in the Amazon.</p>
                             <button class="movie-list-item-button">Watch</button>
                         </div>
                     </div>
@@ -526,50 +580,59 @@ body {
                         <div class="movie-list-item">
                             <img class="movie-list-item-img" src="images/17.jpg" alt="">
                             <span class="movie-list-item-title">Her</span>
-                            <p class="movie-list-item-desc">Lorem ipsum dolor sit amet consectetur adipisicing elit. At
-                                hic fugit similique accusantium.</p>
+                            <p class="movie-list-item-desc">A banished princess discovers she is the heir to 
+                                a forgotten kingdom—and the only one who can save it.
+</p>
                             <button class="movie-list-item-button">Watch</button>
                         </div>
                         <div class="movie-list-item">
                             <img class="movie-list-item-img" src="images/18.jpg" alt="">
                             <span class="movie-list-item-title">Her</span>
-                            <p class="movie-list-item-desc">Lorem ipsum dolor sit amet consectetur adipisicing elit. At
-                                hic fugit similique accusantium.</p>
+                            <p class="movie-list-item-desc">A rebellious space pilot discovers a wormhole, 
+                                leading to a galaxy on the brink of war—and Earth’s fate at risk.</p>
                             <button class="movie-list-item-button">Watch</button>
                         </div>
                         <div class="movie-list-item">
                             <img class="movie-list-item-img" src="images/19.jpg" alt="">
                             <span class="movie-list-item-title">Her</span>
-                            <p class="movie-list-item-desc">Lorem ipsum dolor sit amet consectetur adipisicing elit. At
-                                hic fugit similique accusantium.</p>
+                            <p class="movie-list-item-desc">An archaeologist and a treasure hunter race against
+                                 mercenaries to find a legendary city hidden in the Amazon.
+
+                                .</p>
                             <button class="movie-list-item-button">Watch</button>
                         </div>
                         <div class="movie-list-item">
                             <img class="movie-list-item-img" src="images/7.jpg" alt="">
                             <span class="movie-list-item-title">Her</span>
-                            <p class="movie-list-item-desc">Lorem ipsum dolor sit amet consectetur adipisicing elit. At
-                                hic fugit similique accusantium.</p>
+                            <p class="movie-list-item-desc">A banished princess discovers she is the heir to a forgotten
+                                 kingdom—and the only one who can save it.
+
+                            </p>
                             <button class="movie-list-item-button">Watch</button>
                         </div>
                         <div class="movie-list-item">
                             <img class="movie-list-item-img" src="images/1.jpg" alt="">
                             <span class="movie-list-item-title">Her</span>
-                            <p class="movie-list-item-desc">Lorem ipsum dolor sit amet consectetur adipisicing elit. At
-                                hic fugit similique accusantium.</p>
+                            <p class="movie-list-item-desc">A rebellious space pilot discovers a wormhole, 
+                                leading to a galaxy on the brink of war—and Earth’s fate at risk.</p>
                             <button class="movie-list-item-button">Watch</button>
                         </div>
                         <div class="movie-list-item">
                             <img class="movie-list-item-img" src="images/1.jpg" alt="">
                             <span class="movie-list-item-title">Her</span>
-                            <p class="movie-list-item-desc">Lorem ipsum dolor sit amet consectetur adipisicing elit. At
-                                hic fugit similique accusantium.</p>
+                            <p class="movie-list-item-desc">An archaeologist and a treasure hunter race against mercenaries 
+                                to find a legendary city hidden in the Amazon.
+
+                            </p>
                             <button class="movie-list-item-button">Watch</button>
                         </div>
                         <div class="movie-list-item">
                             <img class="movie-list-item-img" src="images/1.jpg" alt="">
                             <span class="movie-list-item-title">Her</span>
-                            <p class="movie-list-item-desc">Lorem ipsum dolor sit amet consectetur adipisicing elit. At
-                                hic fugit similique accusantium.</p>
+                            <p class="movie-list-item-desc">A banished princess discovers she is the heir to a forgotten 
+                                kingdom—and the only one who can save it.
+
+                            </p>
                             <button class="movie-list-item-button">Watch</button>
                         </div>
                     </div>
