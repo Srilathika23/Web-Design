@@ -163,27 +163,33 @@ form .form-help :where(label, a) {
         <a href="#"><img src="images/logo.jpg" alt="logo"></a>
     </nav>
     <div class="form-wrapper">
-        <h2>Sign In</h2>
-        <form action="page.html">
-            <div class="form-control">
-                <input type="text" required>
-                <label>Email or phone number</label>
-            </div>
-            <div class="form-control">
-                <input type="password" required>
-                <label>Password</label>
-            </div>
-            <button type="submit">Sign In</button>
-            <div class="form-help"> 
-                <div class="remember-me">
-                    <input type="checkbox" id="remember-me">
-                    <label for="remember-me">Remember me</label>
-                </div>
-                <a href="#">Need help?</a>
-            </div>
-        </form>
-        <p>New to MovieMind?? <a href="#">Sign up</a></p>
-        
+    <h2>Sign In</h2>
+    <form onsubmit="signIn(event)">
+        <input type="email" id="email" placeholder="Enter Email" required><br><br>
+        <input type="password" id="password" placeholder="Enter Password" required><br><br>
+        <button type="submit">Sign In</button>
+    </form>
+    <p>New to MovieMind?? <a href="signup.html">Sign up</a></p>
+
+    <script>
+        function signIn(event) {
+            event.preventDefault();
+
+            let email = document.getElementById("email").value;
+            let password = document.getElementById("password").value;
+
+            let storedUser = JSON.parse(localStorage.getItem("user"));
+
+            if (storedUser && storedUser.email === email && storedUser.password === password) {
+                alert("Sign-in successful! Welcome, " + storedUser.username);
+                // Redirect to dashboard or home page
+                window.location.href = "page.html";
+            } else {
+                alert("Invalid email or password. Please try again.");
+            }
+        }
+    </script>
     </div>
 </body>
 </html>
+
